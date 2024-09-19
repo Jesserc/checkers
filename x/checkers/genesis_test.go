@@ -12,8 +12,11 @@ import (
 
 func TestGenesis(t *testing.T) {
 	genesisState := types.GenesisState{
-		Params:	types.DefaultParams(),
-		
+		Params: types.DefaultParams(),
+
+		SystemInfo: &types.SystemInfo{
+			NextId: 57,
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -25,7 +28,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(&genesisState)
 	nullify.Fill(got)
 
-	
-
+	require.Equal(t, genesisState.SystemInfo, got.SystemInfo)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

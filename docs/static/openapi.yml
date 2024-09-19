@@ -28868,6 +28868,42 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
+  /jesserc/checkers/checkers/system_info:
+    get:
+      summary: Queries a SystemInfo by index.
+      operationId: JessercCheckersCheckersSystemInfo
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              SystemInfo:
+                type: object
+                properties:
+                  nextId:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
   /tendermint/spn/claim/airdrop_supply:
     get:
       summary: Queries a AirdropSupply by index.
@@ -49107,6 +49143,15 @@ definitions:
   jesserc.checkers.checkers.Params:
     type: object
     description: Params defines the parameters for the module.
+  jesserc.checkers.checkers.QueryGetSystemInfoResponse:
+    type: object
+    properties:
+      SystemInfo:
+        type: object
+        properties:
+          nextId:
+            type: string
+            format: uint64
   jesserc.checkers.checkers.QueryParamsResponse:
     type: object
     properties:
@@ -49114,6 +49159,12 @@ definitions:
         description: params holds all the parameters of this module.
         type: object
     description: QueryParamsResponse is response type for the Query/Params RPC method.
+  jesserc.checkers.checkers.SystemInfo:
+    type: object
+    properties:
+      nextId:
+        type: string
+        format: uint64
   tendermint.spn.claim.ClaimRecord:
     type: object
     properties:

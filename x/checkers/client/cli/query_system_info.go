@@ -9,17 +9,19 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func CmdQueryParams() *cobra.Command {
+func CmdShowSystemInfo() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "params",
-		Short: "shows the parameters of the module",
+		Use:   "show-system-info",
+		Short: "shows systemInfo",
 		Args:  cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			res, err := queryClient.Params(context.Background(), &types.QueryParamsRequest{})
+			params := &types.QueryGetSystemInfoRequest{}
+
+			res, err := queryClient.SystemInfo(context.Background(), params)
 			if err != nil {
 				return err
 			}
