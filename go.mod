@@ -2,8 +2,6 @@ module github.com/jesserc/checkers
 
 go 1.21
 
-toolchain go1.22.5
-
 require (
 	github.com/cosmos/cosmos-sdk v0.45.4
 	github.com/cosmos/ibc-go/v3 v3.0.0
